@@ -13,8 +13,28 @@ public class PageBuilder {
 
     static boolean returnStatus;
 
+    public static void scriptBuilder(String body){
+        String scriptPath = GlobalConstants.SELECTED_PROJECT_PATH + File.separator +GlobalConstants.TEST_FRAMEWORK_TESTSUITES_FOLDER+File.separator+GlobalConstants.TEST_MODULE_NAME.toLowerCase()+File.separator+GlobalConstants.SCRIPT_NAME+".java";
+        String readScriptModel = Generic.readText(scriptPath);
+        readScriptModel = readScriptModel.replaceAll("//SAP-END - TEST SCRIPT",body+"//SAP-END - TEST SCRIPT");
+        Generic.writeText(readScriptModel,scriptPath,false);
+    }
+    public static String script_body_builder(DefaultListModel steps){
+        stringBuilder = new StringBuilder();
+        for(int i=0;i<=steps.size()-1;i++){
+            stringBuilder.append("\t\t"+steps.getElementAt(i).toString());
+            stringBuilder.append(System.lineSeparator());
+        }
+        stringBuilder.append(System.lineSeparator());
+        //stringBuilder.append("\t\treturn \"true\";");
+//        stringBuilder.append(System.lineSeparator());
+//        stringBuilder.append("\t}");
+
+        return stringBuilder.toString();
+    }
+
     public static void pageBuilder(String body,String type){
-        String pagePath = GlobalConstants.SELECTED_PROJECT_PATH + File.separator +GlobalConstants.TEST_FRAMEWORK_TESTPAGES_FOLDER+File.separator+GlobalConstants.Method_Selected_Page_Name+".java";
+        String pagePath = GlobalConstants.SELECTED_PROJECT_PATH + File.separator +GlobalConstants.TEST_FRAMEWORK_TESTPAGES_FOLDER+File.separator+GlobalConstants.TestScript_Selected_Page_Name+".java";
         String readPageModel = Generic.readText(pagePath);
 
         switch (type.toUpperCase()){

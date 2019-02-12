@@ -161,7 +161,7 @@ public class CreateNewMethod extends JFrame {
     }
     public static void initLoad(){
         rbPublic.setSelected(true);
-        txtPageName.setText(GlobalConstants.Method_Selected_Page_Name);
+        txtPageName.setText(GlobalConstants.TestScript_Selected_Page_Name);
 
 //        cbPageName.removeAllItems();
 //        String[] pages=null;

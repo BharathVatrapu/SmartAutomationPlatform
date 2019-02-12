@@ -157,17 +157,20 @@ public class SetupParams extends JFrame {
             return;
         }
         if(flag) {
+
             // paramNamesAndvaluesListModel.addElement(inputParameter.getText());
-            Init.paramNameandValuesListModel.addElement(inputParameter.getText());
-            Init.paramNameListModel.addElement(inputParameter.getText());
+            if (Init.paramNameListModel.contains(inputParameter.getText())){
+                JOptionPane.showMessageDialog(null, inputParameter.getText()+":  Already Exist !");
+            } else {
+                Init.paramNameandValuesListModel.addElement(inputParameter.getText());
+                Init.paramNameListModel.addElement(inputParameter.getText());
 
-           // paramNameListModel.addElement(inputParameter.getText());
+                // paramNameListModel.addElement(inputParameter.getText());
 
-            listParams.setModel(Init.paramNameListModel);
-            listParams.setSelectedIndex(0);
-
-            inputParameter.setText("");
-
+                listParams.setModel(Init.paramNameListModel);
+                listParams.setSelectedIndex(0);
+                inputParameter.setText("");
+            }
         }
     }
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt){

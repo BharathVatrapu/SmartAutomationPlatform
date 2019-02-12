@@ -34,6 +34,7 @@ public class SmartGen extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(255, 255, 255));
 
+
         tblTestScripts.setAutoCreateRowSorter(true);
         tblTestScripts.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 255)));
         tblTestScripts.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N

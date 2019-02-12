@@ -35,11 +35,7 @@ public class Json {
                 testdata= listModel.get(i).toString().split("\\=");
                 jsonObject.put(testdata[0], testdata[1]);
             }
-//            JSONObject jsonObject2 = new JSONObject();
-//            jsonObject2.put(scriptName, jsonObject);
 //
-//            JSONObject finaljsonObject = new JSONObject();
-           // finaljsonObject.put(obj)
             writeJson(jsonObject,jPath);
 
         } catch (FileNotFoundException e) {
@@ -119,5 +115,29 @@ public class Json {
         }
 
         return valStr;
+    }
+
+    public static DefaultListModel getKeyandValues(String jsonPath){
+        DefaultListModel keyandvaluesListmodel= new DefaultListModel();
+        keyandvaluesListmodel.removeAllElements();
+        String valStr;
+        try {
+            JSONParser parser = new JSONParser();
+
+            Object obj = parser.parse(new FileReader(jsonPath));
+
+            JSONObject jsonObject = (JSONObject) obj;
+
+            for (Iterator iterator = jsonObject.keySet().iterator(); iterator.hasNext(); ) {
+                String key = (String) iterator.next();
+                valStr=jsonObject.get(key).toString();
+                System.out.println(jsonObject.get(key));
+                keyandvaluesListmodel.addElement(key+"="+valStr);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+        return keyandvaluesListmodel;
     }
 }

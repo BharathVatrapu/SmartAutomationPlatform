@@ -16,7 +16,7 @@ import java.util.Map;
  */
 public class NewTestScript extends javax.swing.JFrame {
     public static HashMap<String,String> addEnvvalu_Hashmap=null;
-    public static DefaultListModel testdataListmodel= new DefaultListModel();
+
     /**
      * Creates new form NewTestScript1
      */
@@ -46,6 +46,7 @@ public class NewTestScript extends javax.swing.JFrame {
         btnNext = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("NewTestScript");
 
         txtMethodName.setText("Script Name: ");
 
@@ -220,7 +221,7 @@ public class NewTestScript extends javax.swing.JFrame {
         AddEnvironment addEnvironment=new AddEnvironment();
         addEnvironment.setVisible(true);
     }
-    private void btnAddTestDataActionPerformed(java.awt.event.ActionEvent evt) {
+    private static void btnAddTestDataActionPerformed(java.awt.event.ActionEvent evt) {
         boolean flag = true;
         if (inputKey.getText().isEmpty()||inputValue.getText().isEmpty()){
             JOptionPane.showMessageDialog(null,"Enter Test data key && value");
@@ -228,8 +229,8 @@ public class NewTestScript extends javax.swing.JFrame {
             //return;
         }
         if(flag) {
-            testdataListmodel.addElement(inputKey.getText()+"="+inputValue.getText());
-            listTestData.setModel(testdataListmodel);
+            Init.testdataListmodel.addElement(inputKey.getText()+"="+inputValue.getText());
+            listTestData.setModel(Init.testdataListmodel);
             listTestData.setSelectedIndex(0);
             inputValue.setText("");
             inputKey.setText("");
@@ -240,12 +241,13 @@ public class NewTestScript extends javax.swing.JFrame {
         GlobalConstants.TEST_MODULE_NAME=comboModule.getSelectedItem().toString();
 //        GlobalConstants.TEST_ENV_NAME=comboEnv.getSelectedItem().toString();
         //Generic.writeTestdataJsonFile(testdataListmodel,inputScriptName.getText());
-        GlobalConstants.NEW_SCRIPT_NAME=inputScriptName.getText();
-        String jpath=GlobalConstants.SELECTED_PROJECT_PATH+ File.separator+GlobalConstants.TEST_FRAMEWORK_TESTDATA_FOLDER+File.separator+GlobalConstants.TEST_MODULE_NAME+File.separator+inputScriptName.getText().toUpperCase()+".json";
-        Json.writeExistingJsonFile(testdataListmodel,inputScriptName.getText(),jpath);
+        GlobalConstants.SCRIPT_NAME=inputScriptName.getText();
+//        String jpath=GlobalConstants.SELECTED_PROJECT_PATH+ File.separator+GlobalConstants.TEST_FRAMEWORK_TESTDATA_FOLDER+File.separator+GlobalConstants.TEST_MODULE_NAME+File.separator+inputScriptName.getText().toUpperCase()+".json";
+        //Json.writeExistingJsonFile(testdataListmodel,inputScriptName.getText(),jpath);
        CreateTestScript createTestScript=new CreateTestScript();
        createTestScript.setVisible(true);
-       CreateTestScript.initLoad();
+        CreateTestScript.initLoad();
+        Init.TestScript_ManualSteps=new HashMap<String,String>();
        dispose();
     }
     /**
@@ -267,13 +269,13 @@ public class NewTestScript extends javax.swing.JFrame {
     private javax.swing.JButton btnNext;
     public static javax.swing.JComboBox<String> comboEnv;
     public static javax.swing.JComboBox<String> comboModule;
-    private javax.swing.JTextField inputKey;
-    private javax.swing.JTextField inputScriptName;
-    private javax.swing.JTextField inputValue;
+    public static javax.swing.JTextField inputKey;
+    public static javax.swing.JTextField inputScriptName;
+    public static javax.swing.JTextField inputValue;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JList<String> listTestData;
+    public static javax.swing.JList<String> listTestData;
     private javax.swing.JLabel txtENV;
     private javax.swing.JLabel txtMethodName;
     private javax.swing.JLabel txtModule;

@@ -100,7 +100,7 @@ public class PageMethods extends javax.swing.JFrame {
         setVisible(true);
     }
     public void initLoad(){
-        //txtPageName.setText(GlobalConstants.Method_Selected_Page_Name+" >>> "+GlobalConstants.Method_Name +" >>> Operations");
+        //txtPageName.setText(GlobalConstants.TestScript_Selected_Page_Name+" >>> "+GlobalConstants.Method_Name +" >>> Operations");
         loadTable();
     }
     public static void loadTable(){
@@ -124,7 +124,7 @@ public class PageMethods extends javax.swing.JFrame {
     }
     public static List<String> getMethods() {
         List<String> listMethods = new ArrayList<String>();
-        String readPageModel = Generic.readText(GlobalConstants.SELECTED_PROJECT_PATH+ File.separator+GlobalConstants.TEST_FRAMEWORK_TESTPAGES_FOLDER+ File.separator+GlobalConstants.Method_Selected_Page_Name+".java");
+        String readPageModel = Generic.readText(GlobalConstants.SELECTED_PROJECT_PATH+ File.separator+GlobalConstants.TEST_FRAMEWORK_TESTPAGES_FOLDER+ File.separator+GlobalConstants.TestScript_Selected_Page_Name+".java");
 
         String methods=null;
         methods=readPageModel.substring(readPageModel.indexOf("//SAP-START - METHOD DECLARAITON"),readPageModel.indexOf("//SAP-END - METHOD DECLARAITON"));

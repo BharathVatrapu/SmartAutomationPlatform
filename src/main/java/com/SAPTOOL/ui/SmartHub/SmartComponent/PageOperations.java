@@ -116,7 +116,7 @@ public class PageOperations extends javax.swing.JFrame {
         return viewPageOperationsTableModel;
     }
     public void initLoad(){
-        txtPageName.setText(GlobalConstants.Method_Selected_Page_Name+" >>> "+GlobalConstants.Method_Name +" >>> Operations");
+        txtPageName.setText(GlobalConstants.TestScript_Selected_Page_Name+" >>> "+GlobalConstants.Method_Name +" >>> Operations");
         loadTable();
     }
     public static void loadTable(){
@@ -124,6 +124,7 @@ public class PageOperations extends javax.swing.JFrame {
     }
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {
         boolean flag = true;
+        arg_incrementer=0;
         if (selected_Page_Operation==null){
             JOptionPane.showMessageDialog(null,"Select Operation !!!");
             flag=false;
@@ -149,7 +150,7 @@ public class PageOperations extends javax.swing.JFrame {
     }
     public static List<String> getOperations() {
         List<String> listOperations = new ArrayList<String>();
-        String readPageModel = Generic.readText(GlobalConstants.SELECTED_PROJECT_PATH+ File.separator+GlobalConstants.TEST_FRAMEWORK_TESTPAGES_FOLDER+ File.separator+GlobalConstants.Method_Selected_Page_Name+".java");
+        String readPageModel = Generic.readText(GlobalConstants.SELECTED_PROJECT_PATH+ File.separator+GlobalConstants.TEST_FRAMEWORK_TESTPAGES_FOLDER+ File.separator+GlobalConstants.TestScript_Selected_Page_Name+".java");
 
         String operations=null;
         operations=readPageModel.substring(readPageModel.indexOf("//SAP-START - OPERATION DECLARAITON"),readPageModel.indexOf("//SAP-END - OPERATION DECLARAITON"));

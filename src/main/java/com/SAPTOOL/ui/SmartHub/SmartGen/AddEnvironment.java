@@ -39,6 +39,7 @@ public class AddEnvironment extends javax.swing.JFrame {
         txtEnv = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("AddEnvironment");
 
         inputEnv.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         inputEnv.setForeground(new java.awt.Color(0, 0, 153));

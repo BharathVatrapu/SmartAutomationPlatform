@@ -309,7 +309,7 @@ public class Projects extends JPanel {
                                 .addComponent(imgRobo, GroupLayout.PREFERRED_SIZE, 605, GroupLayout.PREFERRED_SIZE)
                                 .addContainerGap(35, Short.MAX_VALUE))
         );
-    }// </editor-fold>
+    }
 
     private void btnConfigProjectActionPerformed(MouseEvent evt) {
         // TODO add your handling code here:
@@ -382,7 +382,6 @@ public class Projects extends JPanel {
     public static void initLoad(){
         tblProjects.setModel(getModel(GlobalConstants.PROJECTS_FOLDER_PATH));
         txtProjectName.setText("");
-
     }
     public static ViewProjectsTableModel getModel(String dirPath) {
         int i=1;

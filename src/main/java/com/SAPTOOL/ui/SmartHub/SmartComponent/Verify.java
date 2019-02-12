@@ -135,7 +135,7 @@ public class Verify extends javax.swing.JFrame {
         setVisible(true);
     }
     public void initLoad(){
-        Selected_Page=GlobalConstants.Method_Selected_Page_Name;
+        Selected_Page=GlobalConstants.TestScript_Selected_Page_Name;
         String[] pages=null;
         String page=null;
 
@@ -150,7 +150,7 @@ public class Verify extends javax.swing.JFrame {
 
     private void btnObjectsActionPerformed(java.awt.event.ActionEvent evt) {
 
-        GlobalConstants.Method_Selected_Page_Name = comboPage.getSelectedItem().toString();
+        GlobalConstants.TestScript_Selected_Page_Name = comboPage.getSelectedItem().toString();
 
         PageObjects pageObjects=new PageObjects();
         pageObjects.setVisible(true);
@@ -168,7 +168,7 @@ public class Verify extends javax.swing.JFrame {
     private void btnDoneActionPerformed(java.awt.event.ActionEvent evt) {
         String veri=null;
         String final_veri=null;
-        GlobalConstants.Method_Selected_Page_Name = Selected_Page;
+        GlobalConstants.TestScript_Selected_Page_Name = Selected_Page;
         DefaultListModel defaultListModelVerify=new DefaultListModel();
         defaultListModelVerify.clear();
         for (int i = 0; i < listVerificationPoint.getModel().getSize(); i++) {

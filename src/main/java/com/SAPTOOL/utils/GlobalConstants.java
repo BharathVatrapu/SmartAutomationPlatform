@@ -111,7 +111,10 @@ public class GlobalConstants {
     public static String Method_AccessModifier=null;
     public static String Method_Return_Type=null;
     public static boolean Method_args_status=false;
-    public static String Method_Selected_Page_Name=null;
+
+    public static String TestScript_Selected_Page_Name=null;
+
+    public static String TestScript_Button_Name=null;
 
     public static boolean Method_Verify = false;
 
@@ -121,5 +124,9 @@ public class GlobalConstants {
     public static String STEP_EXPECTED=null;
     public static String STEP_FAILMESSAGE=null;
 
-    public static String NEW_SCRIPT_NAME=null;
+    public static String SCRIPT_NAME=null;
+
+    public static String SELECTED_METHOD=null;
+
+    public static boolean VERIFY_SCRIPT_COMMAND=false;
 }

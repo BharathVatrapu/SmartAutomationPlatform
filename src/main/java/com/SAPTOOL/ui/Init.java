@@ -41,12 +41,18 @@ public class Init {
 
     public static DefaultListModel testScript_steps_ListModel= new DefaultListModel();
 
+    public static DefaultListModel Add_TestScript_step_ListModel= new DefaultListModel();
 
+    public static DefaultListModel TestScript_LisModel = new DefaultListModel();
+
+    public static DefaultListModel testdataListmodel= new DefaultListModel();
 
     public static ConfigParams configParams=null;
     public static SetupParams setupParams=null;
     public static AddValue addValue=null;
 
+
+    public static HashMap<String,String> TestScript_ManualSteps=null;
 
 
     public static String param_Name=null;

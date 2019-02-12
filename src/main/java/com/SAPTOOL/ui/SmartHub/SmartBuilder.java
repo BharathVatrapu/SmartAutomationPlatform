@@ -367,7 +367,7 @@ public class SmartBuilder extends JPanel {
 
             //tblPages.clearSelection();
             selected_Page = (String) tblPages.getModel().getValueAt(row, 1);
-            GlobalConstants.Method_Selected_Page_Name=selected_Page;
+            GlobalConstants.TestScript_Selected_Page_Name=selected_Page;
 
             tblPages.setSelectionBackground(Color.ORANGE);
            // txtProjectName.setText(selected_Project.toUpperCase());

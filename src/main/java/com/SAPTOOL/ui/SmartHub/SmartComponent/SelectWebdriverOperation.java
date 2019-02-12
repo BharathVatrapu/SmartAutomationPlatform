@@ -5,8 +5,6 @@ import com.SAPTOOL.ui.Init;
 import com.SAPTOOL.ui.SmartHub.SmartGen.CreateTestScript;
 import com.SAPTOOL.utils.GlobalConstants;
 
-import java.sql.SQLOutput;
-
 /**
  *
  * @author bvatrapu
@@ -68,12 +66,12 @@ public class SelectWebdriverOperation extends javax.swing.JFrame {
         String step= this.object+"."+cbWebdriverOperations.getSelectedItem().toString();
 
         if(GlobalConstants.Method_Verify){
-            System.out.println(GlobalConstants.Method_Selected_Page_Name+">>>>"+Verify.Selected_Page);
-            if(GlobalConstants.Method_Selected_Page_Name.equalsIgnoreCase(Verify.Selected_Page)){
+            System.out.println(GlobalConstants.TestScript_Selected_Page_Name+">>>>"+Verify.Selected_Page);
+            if(GlobalConstants.TestScript_Selected_Page_Name.equalsIgnoreCase(Verify.Selected_Page)){
                 Init.verification_steps_ListModel.addElement(step);
                 Verify.listVerificationPoint.setModel(Init.verification_steps_ListModel);
             } else{
-                pagename = GlobalConstants.Method_Selected_Page_Name.substring(0, GlobalConstants.Method_Selected_Page_Name.length() - 4);
+                pagename = GlobalConstants.TestScript_Selected_Page_Name.substring(0, GlobalConstants.TestScript_Selected_Page_Name.length() - 4);
                 step = pagename.toLowerCase()+"."+step;
                 Init.verification_steps_ListModel.addElement(step);
                 Verify.listVerificationPoint.setModel(Init.verification_steps_ListModel);

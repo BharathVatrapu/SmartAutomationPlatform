@@ -172,7 +172,7 @@ public class SmartComponent extends JFrame {
         setVisible(true);
     }
     public static void initload(){
-        txtMethodName.setText(GlobalConstants.Method_Selected_Page_Name+" >>> "+GlobalConstants.Method_Name);
+        txtMethodName.setText(GlobalConstants.TestScript_Selected_Page_Name+" >>> "+GlobalConstants.Method_Name);
     }
     private void btnObjectsActionPerformed(ActionEvent evt) {
         // TODO add your handling code here:

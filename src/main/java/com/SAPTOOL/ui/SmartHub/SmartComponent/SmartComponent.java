@@ -284,7 +284,7 @@ public class SmartComponent extends javax.swing.JFrame {
     }
 
     public void initLoad() {
-        txtPageName.setText(GlobalConstants.Method_Selected_Page_Name);
+        txtPageName.setText(GlobalConstants.TestScript_Selected_Page_Name);
     }
 
     private void btnObjectsActionPerformed(java.awt.event.ActionEvent evt) {
@@ -307,17 +307,6 @@ public class SmartComponent extends javax.swing.JFrame {
         // TODO add your handling code here:
     }
 
-    private void btnUpActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
-    }
-
-    private void btnDownActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
-    }
-
-    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
-    }
 
     private void btnSwapActionPerformed(java.awt.event.ActionEvent evt) {
         int swapEle[]=listPageMethodSteps.getSelectedIndices();

@@ -28,6 +28,7 @@ public class AddModule extends javax.swing.JFrame {
         txtModuleName = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("AddModule");
 
         inputModuleName.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         inputModuleName.setForeground(new java.awt.Color(0, 0, 153));

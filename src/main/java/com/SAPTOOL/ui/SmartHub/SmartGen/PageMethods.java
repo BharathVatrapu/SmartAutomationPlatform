@@ -8,6 +8,7 @@ import com.SAPTOOL.utils.Generic;
 import com.SAPTOOL.utils.GlobalConstants;
 import org.apache.commons.lang3.StringUtils;
 
+import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import java.awt.*;
@@ -41,7 +42,7 @@ public class PageMethods extends javax.swing.JFrame {
         listPages = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
+        setTitle("PageMethods");
 
         jScrollPane1.setViewportView(tblPageComponents);
         tblPageComponents.getSelectionModel().addListSelectionListener(new SelectionListener());
@@ -95,7 +96,7 @@ public class PageMethods extends javax.swing.JFrame {
         setVisible(true);
     }
     public void initLoad(){
-        //txtPageName.setText(GlobalConstants.Method_Selected_Page_Name+" >>> "+GlobalConstants.Method_Name +" >>> Operations");
+        //txtPageName.setText(GlobalConstants.TestScript_Selected_Page_Name+" >>> "+GlobalConstants.Method_Name +" >>> Operations");
         loadTable();
     }
     public static void loadTable(){
@@ -119,7 +120,7 @@ public class PageMethods extends javax.swing.JFrame {
     }
     public static List<String> getMethods() {
         List<String> listMethods = new ArrayList<String>();
-        String readPageModel = Generic.readText(GlobalConstants.SELECTED_PROJECT_PATH+ File.separator+GlobalConstants.TEST_FRAMEWORK_TESTPAGES_FOLDER+ File.separator+GlobalConstants.Method_Selected_Page_Name+".java");
+        String readPageModel = Generic.readText(GlobalConstants.SELECTED_PROJECT_PATH+ File.separator+GlobalConstants.TEST_FRAMEWORK_TESTPAGES_FOLDER+ File.separator+GlobalConstants.TestScript_Selected_Page_Name+".java");
 
         String methods=null;
         methods=readPageModel.substring(readPageModel.indexOf("//SAP-START - METHOD DECLARAITON"),readPageModel.indexOf("//SAP-END - METHOD DECLARAITON"));
@@ -146,10 +147,14 @@ public class PageMethods extends javax.swing.JFrame {
     }
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {
 
+
         if(selected_Page_Method.contains("String[] args")){
+            GlobalConstants.SELECTED_METHOD=selected_Page_Method.substring(0,selected_Page_Method.indexOf("String[] args"));
+
+            System.out.println("GlobalConstants.SELECTED_METHOD::"+GlobalConstants.SELECTED_METHOD);
             String methodname=null;
             //methodname=selected_Page_Method.replaceAll("\(String\[\] args\)","");
-            String readPageModel = Generic.readText(GlobalConstants.SELECTED_PROJECT_PATH+ File.separator+GlobalConstants.TEST_FRAMEWORK_TESTPAGES_FOLDER+ File.separator+GlobalConstants.Method_Selected_Page_Name+".java");
+            String readPageModel = Generic.readText(GlobalConstants.SELECTED_PROJECT_PATH+ File.separator+GlobalConstants.TEST_FRAMEWORK_TESTPAGES_FOLDER+ File.separator+GlobalConstants.TestScript_Selected_Page_Name+".java");
             methodname=readPageModel.substring(readPageModel.indexOf("public String "+selected_Page_Method+"{"),readPageModel.indexOf("//SAP-END - METHOD"));
 
             //int count = methodname.length() - methodname.replaceAll("args","").length() - 1;
@@ -177,17 +182,25 @@ public class PageMethods extends javax.swing.JFrame {
 //                //
 //            }
             }
-            System.out.println("lenth::"+listMethodargs.length);
-            SetTestData setTestData=new SetTestData();
+
+            SetupTestArgs setTestData=new SetupTestArgs();
             setTestData.setVisible(true);
-            SetTestData.initLoad(listMethodargs);
+            SetupTestArgs.initLoad(listMethodargs);
 
         } else {
+            if(GlobalConstants.VERIFY_SCRIPT_COMMAND){
+                Init.Add_TestScript_step_ListModel.addElement("verify("+GlobalConstants.TestScript_Selected_Page_Name.toLowerCase() + "." + selected_Page_Method+");");
+                AddTestScriptStep.listScriptSteps.setModel(Init.Add_TestScript_step_ListModel);
+                AddTestScriptStep.btnVerify.setEnabled(true);
+                AddTestScriptStep.listScriptSteps.setBorder(BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
+            } else {
 //            int count = string.length() - string.replaceAll("g","").length()
-            Init.testScript_steps_ListModel.addElement(GlobalConstants.Method_Selected_Page_Name.toLowerCase() + "." + selected_Page_Method);
-            CreateTestScript.listTestScriptSteps.setModel(Init.testScript_steps_ListModel);
+                Init.Add_TestScript_step_ListModel.addElement(GlobalConstants.TestScript_Selected_Page_Name.toLowerCase() + "." + selected_Page_Method+";");
+                AddTestScriptStep.listScriptSteps.setModel(Init.Add_TestScript_step_ListModel);
+            }
 
         }
+
         dispose();
     }
     class SelectionListener implements ListSelectionListener {

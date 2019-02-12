@@ -4,7 +4,6 @@ package com.SAPTOOL.ui.SmartHub.SmartGen;
 import com.SAPTOOL.tables.ViewPageOperationsTable;
 import com.SAPTOOL.tables.ViewPageOperationsTableModel;
 import com.SAPTOOL.ui.Init;
-import com.SAPTOOL.ui.SmartHub.SmartComponent.SmartComponent;
 import com.SAPTOOL.ui.SmartHub.SmartComponent.Verify;
 import com.SAPTOOL.utils.Generic;
 import com.SAPTOOL.utils.GlobalConstants;
@@ -42,6 +41,7 @@ public class PageOperations extends JFrame {
         txtPageName = new JLabel();
 
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        setTitle("PageOperations");
 
         tblPageComponents.setModel(new javax.swing.table.DefaultTableModel(
                 new Object [][] {
@@ -118,7 +118,7 @@ public class PageOperations extends JFrame {
         return viewPageOperationsTableModel;
     }
     public void initLoad(){
-        txtPageName.setText(GlobalConstants.Method_Selected_Page_Name+" >>> "+GlobalConstants.Method_Name +" >>> Operations");
+        txtPageName.setText(GlobalConstants.TestScript_Selected_Page_Name+" >>> "+GlobalConstants.Method_Name +" >>> Operations");
         loadTable();
     }
     public static void loadTable(){
@@ -151,7 +151,7 @@ public class PageOperations extends JFrame {
     }
     public static List<String> getOperations() {
         List<String> listOperations = new ArrayList<String>();
-        String readPageModel = Generic.readText(GlobalConstants.SELECTED_PROJECT_PATH+ File.separator+GlobalConstants.TEST_FRAMEWORK_TESTPAGES_FOLDER+ File.separator+GlobalConstants.Method_Selected_Page_Name+".java");
+        String readPageModel = Generic.readText(GlobalConstants.SELECTED_PROJECT_PATH+ File.separator+GlobalConstants.TEST_FRAMEWORK_TESTPAGES_FOLDER+ File.separator+GlobalConstants.TestScript_Selected_Page_Name+".java");
 
         String operations=null;
         operations=readPageModel.substring(readPageModel.indexOf("//SAP-START - OPERATION DECLARAITON"),readPageModel.indexOf("//SAP-END - OPERATION DECLARAITON"));
